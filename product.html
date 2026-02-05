@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Byteclave Resources</title>
+    <meta name="description" content="Detailed resource preview and download from Byteclave Resources.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" id="og-title" content="Product Details - Byteclave Resources">
+    <meta property="og:description" id="og-description" content="Detailed resource preview and download from Byteclave Resources.">
+    <meta property="og:image" id="og-image" content="">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation (Simple Back Button) -->
+    <nav class="container" style="padding: 20px 0;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Resources</a>
+    </nav>
+
+    <!-- Product Details -->
+    <main class="container product-details-container">
+        <div id="product-content" class="product-layout">
+            <!-- Content will be injected by product.js -->
+             <div id="loading" class="loading">Loading product details...</div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Byteclave Resources</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/Byteclave" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@Byteclave" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Byteclave" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/product.js"></script>
+</body>
+</html>
