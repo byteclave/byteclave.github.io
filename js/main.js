@@ -10,7 +10,7 @@ let searchQuery = '';
 
 async function fetchProducts() {
     try {
-        const q = query(collection(db, "products"));
+        const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
         
         console.log("Fetching products from Firestore...");
         const querySnapshot = await getDocs(q);

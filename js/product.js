@@ -243,18 +243,37 @@ function renderProduct(data, id) {
 
     // Add Copy Link functionality
     const copyBtn = document.getElementById('copy-link-btn');
-    copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(shareUrl).then(() => {
+    copyBtn.addEventListener('click', async () => {
+        try {
+            let linkToCopy = shareUrl;
+            
+            // Attempt to shorten using CleanURI (Free, no-auth API)
+            try {
+                const response = await fetch('https://cleanuri.com/api/v1/shorten', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `url=${encodeURIComponent(shareUrl)}`
+                });
+                const data = await response.json();
+                if (data.result_url) {
+                    linkToCopy = data.result_url;
+                }
+            } catch (apiErr) {
+                console.warn("Shortener API failed, using long link:", apiErr);
+            }
+
+            await navigator.clipboard.writeText(linkToCopy);
             const originalContent = copyBtn.innerHTML;
             copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
             copyBtn.style.borderColor = 'var(--clave-green)';
             
             setTimeout(() => {
                 copyBtn.innerHTML = originalContent;
+                copyBtn.style.borderColor = '';
             }, 2000);
-        }).catch(err => {
+        } catch (err) {
             console.error('Failed to copy: ', err);
-        });
+        }
     });
 }
 
